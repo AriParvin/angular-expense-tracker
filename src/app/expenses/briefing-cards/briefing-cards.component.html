@@ -2,20 +2,20 @@
   <div class="col-sm-3">
     <div class="card">
       <div class="card-header">
-        {{ lastMonthSpending }}
+        {{ lastMonthSpending.month }}
       </div>
       <div class="card-body">
-        <div style="font-size: 30px">${{ lastMonthSpending }}</div>
+        <div style="font-size: 30px">{{ lastMonthSpending.amount }}</div>
       </div>
     </div>
   </div>
   <div class="col-sm-3">
     <div class="card">
       <div class="card-header">
-        {{ currentMonthSpending }}
+        {{ currentMonthSpending.month }}
       </div>
       <div class="card-body">
-        <div style="font-size: 30px">${{ currentMonthSpending }}</div>
+        <div style="font-size: 30px">{{ currentMonthSpending.amount }}</div>
       </div>
     </div>
   </div>

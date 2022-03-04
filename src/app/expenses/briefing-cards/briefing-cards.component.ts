@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import MonthSpending from '../briefling-cards';
 
 @Component({
   selector: 'et-briefing-cards',
@@ -7,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class BriefingCardsComponent implements OnInit {
   constructor() {}
-  @Input() currentMonthSpending: object;
-  @Input() lastMonthSpending: object;
+  @Input() currentMonthSpending: MonthSpending;
+  @Input() lastMonthSpending: MonthSpending;
   ngOnInit(): void {}
 }

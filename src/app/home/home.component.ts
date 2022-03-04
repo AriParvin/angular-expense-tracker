@@ -27,6 +27,5 @@ export class HomeComponent implements OnInit {
   ];
   currentMonthSpending = { amount: 300, month: 'July' };
   lastMonthSpending = { amount: 44, month: 'August' };
-
   ngOnInit() {}
 }
