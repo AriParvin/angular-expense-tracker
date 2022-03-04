@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import MonthSpending from '../expenses/briefling-cards';
 import IExpense from '../expenses/expense';
 
 @Component({
@@ -25,7 +26,8 @@ export class HomeComponent implements OnInit {
       date: '2019-08-21',
     },
   ];
-  currentMonthSpending = { amount: 300, month: 'July' };
-  lastMonthSpending = { amount: 44, month: 'August' };
+  currentMonthSpending: MonthSpending = { amount: 300, month: 'July' };
+  lastMonthSpending: MonthSpending = { amount: 44, month: 'July' };
   ngOnInit() {}
+
 }
