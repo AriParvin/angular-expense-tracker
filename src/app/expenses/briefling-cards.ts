@@ -1,1 +1,1 @@
-export default interface MonthSpending { amount: number, month: string }
+export default interface MonthSpending { amount: string, month: string }
