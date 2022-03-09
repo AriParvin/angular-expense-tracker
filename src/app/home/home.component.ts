@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import * as currency from 'currency.js';
+import { ExpenseService } from '../expenses/expense.service';
 import MonthSpending from '../expenses/briefling-cards';
 import IExpense from '../expenses/expense';
 
 function renderCurrency(amount: number) {
-  return(
-    currency(300, {
-      fromCents: true,
-      pattern: `# !`,
-      symbol: '€',
-      decimal: ',',
-      separator: '.'
-  }).format()
-  )
+  return currency(300, {
+    fromCents: true,
+    pattern: `# !`,
+    symbol: '€',
+    decimal: ',',
+    separator: '.',
+  }).format();
 }
 
 @Component({
@@ -20,28 +19,21 @@ function renderCurrency(amount: number) {
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-
 export class HomeComponent implements OnInit {
-  constructor() {}
-  expenses: IExpense[] = [
-    {
-      description: 'First shopping for the month',
-      amount: 20,
-      date: '2019-08-12',
-    },
-    {
-      description: 'Bicycle for Amy',
-      amount: 10,
-      date: '2019-08-08',
-    },
-    {
-      description: 'First shopping for the month',
-      amount: 14,
-      date: '2019-08-21',
-    },
-  ];
-  currentMonthSpending: MonthSpending = { amount: renderCurrency(300), month: 'July' };
-  lastMonthSpending: MonthSpending= { amount: renderCurrency(300), month: 'July' };
-  ngOnInit() {}
+  private _expenseService: ExpenseService;
+  constructor() {
+    this._expenseService = new ExpenseService();
+    this.expenses = this._expenseService.getExpenses();
+  }
 
+  expenses: IExpense[];
+  currentMonthSpending: MonthSpending = {
+    amount: renderCurrency(300),
+    month: 'July',
+  };
+  lastMonthSpending: MonthSpending = {
+    amount: renderCurrency(300),
+    month: 'July',
+  };
+  ngOnInit() {}
 }
