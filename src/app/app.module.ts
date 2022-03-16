@@ -7,7 +7,7 @@ import { AppComponent } from './app.component';
 import { BriefingCardsComponent } from './expenses/briefing-cards/briefing-cards.component';
 import { ExpenseListComponent } from './expenses/expense-list/expense-list.component';
 import { HomeComponent } from './home/home.component';
-
+import { HttpClientModule } from '@angular/common/http';
 @NgModule({
   declarations: [
     AppComponent,
@@ -15,7 +15,7 @@ import { HomeComponent } from './home/home.component';
     ExpenseListComponent,
     HomeComponent,
   ],
-  imports: [BrowserModule, AppRoutingModule, CommonModule],
+  imports: [BrowserModule, AppRoutingModule, CommonModule, HttpClientModule],
   providers: [],
   bootstrap: [AppComponent],
 })

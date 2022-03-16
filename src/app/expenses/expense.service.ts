@@ -1,23 +1,30 @@
 import IExpense from './expense';
+import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { map } from 'rxjs/operators';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class ExpenseService {
-  getExpenses(): IExpense[] {
-    return [
-      {
-        description: 'Groceries',
-        amount: 20,
-        date: '2019-08-12',
-      },
-      {
-        description: 'New Guitar',
-        amount: 2489,
-        date: '2022 - 11 - 03',
-      },
-      {
-        description: 'Hula-Hoop Course',
-        amount: 100,
-        date: '2010 - 02 - 03',
-      },
-    ];
+  private url = 'api/expenses.json';
+  constructor(private http: HttpClient) {}
+  getExpenses(date: string): Observable<IExpense[]> {
+    return this.http.get<IExpense[]>(this.url).pipe(
+      map((expenses) => {
+        return expenses.filter((e) => e.date.includes(date));
+      })
+    );
+  }
+
+  getTotalSpending(date: string): Observable<number> {
+    return this.getExpenses(date).pipe(
+      map((expenses) => {
+        return expenses
+          .filter((e) => e.date.includes(date))
+          .reduce((previous, current) => previous + current.amount, 0);
+      })
+    );
   }
 }
